@@ -1,0 +1,22 @@
+.button {
+                    background: #1EA5FC;
+                    color:#fff;
+                    box-shadow: -1px 10px 27px rgba(21, 171, 245, 0.22);
+                    border-radius: 6px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 10px 20px;
+                    font-weight: 400;
+                    font-size: 13px;
+                    line-height: 18px;
+                    width:fit-content;
+                    cursor: pointer;
+                    text-decoration: none;
+
+                    .icon {
+                        font-size:13px;
+                        margin-left: 10px;
+                    }
+                }

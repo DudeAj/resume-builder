@@ -1,0 +1,84 @@
+.container {
+
+    .subContainer{
+        display: flex;
+        justify-content: center;
+
+        .createResume {
+            width: 1103px;
+            height: 350px;
+            padding: 50px;
+            margin-top:100px;
+            background: linear-gradient(282.82deg, rgba(255, 255, 255, 0.56) 19.86%, rgba(248, 248, 255, 0.71) 44.92%, rgba(255, 255, 255, 0.59) 79.42%);
+            box-shadow: 9px 9px 32px 4px rgba(219, 219, 219, 0.31);
+            border-radius: 10.7993px;
+            display:flex;
+            align-items: center;
+
+            .info {
+                width:60%;
+                
+                h2 {
+                    font-weight: 700;
+                    font-size: 30px;
+                    line-height: 36px;
+                    color: #2D2D2D;
+                    margin-bottom: 20px;;
+
+                }
+
+                .details {
+                    font-weight: 300;
+                    font-size: 18px;
+                    line-height: 22px;
+                    color: #6C6C6C;
+                    margin-bottom: 20px;
+                }
+
+                .button {
+                    background: #1EA5FC;
+                    color:#fff;
+                    box-shadow: -1px 10px 27px rgba(21, 171, 245, 0.22);
+                    border-radius: 6px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 10px 20px;
+                    font-weight: 400;
+                    font-size: 13px;
+                    line-height: 18px;
+                    width:fit-content;
+                    cursor: pointer;
+                    text-decoration: none;
+
+                    .icon {
+                        font-size:13px;
+                        margin-left: 10px;
+                    }
+                }
+
+            }
+
+            .template {
+                width: 40%;
+                height:100%;
+                display: flex;
+                align-content: right;
+                justify-content: end;
+                
+                img {
+
+                    display: block;
+                    height: 100%;
+                    object-fit: contain;
+                }
+
+
+
+            }
+
+        }
+    }
+    
+}

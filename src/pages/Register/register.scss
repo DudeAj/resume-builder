@@ -1,0 +1,176 @@
+@import "../../global.scss";
+.container {
+    height: 100vh;
+    .subContainer {
+        display: flex;
+        box-sizing: border-box;
+        height:100vh;
+
+        .leftContainer {
+            width: 75%;
+            background-color:#E5E5E5;
+            
+            .leftImage {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .registerForm {
+            width: 25%;
+            padding: 30px;
+
+            h1 {
+
+                span {
+                    color:$primaryColor;
+                }
+            }
+
+            h2 {
+                font-weight: 100;
+                font-size:20px;
+
+            }
+
+            form {
+                margin: 20px 0;
+
+                .forgot-pass {
+                    display: flex;
+                    width: 100%;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-top: 10px;
+                    cursor: pointer;
+
+
+                    .forgotinput {
+                        font-weight: 400;
+                        font-size: 12px;
+                        line-height: 20px;
+                        align-items: center;
+                        display: flex;
+                        cursor:pointer;
+                    }
+
+                    p {
+                        font-weight: 500;
+                        font-size: 12px;
+                        color: $primaryColor;
+                        cursor: pointer;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+
+                .inputHolderContainer {
+                    width: 100%;
+                    margin-top:15px;
+
+                    label {
+                        display: block;
+                        color: $labelColor;
+                        margin-bottom: 2px;
+                        font-weight: 400;
+                        font-size: 12px;
+                        line-height: 12px;
+                    }
+
+                    .login-btn {
+                        width: 100%;
+                        padding: 10px;
+                        background-color: $primaryColor;
+                        border:none;
+                        color: #fff;
+                        font-weight: 700;
+                        font-size: 15px;
+                        line-height: 20px;
+                        border-radius: 6px;
+                        cursor: pointer;
+                    }
+
+                    .google-btn {
+                        width :100%;
+                        background-color: #333333;
+                        padding: 10px;
+                        border:none;
+                        color: grey;
+                        border-radius: 6px;
+                        display:flex;
+                        justify-content: center;
+                        font-weight: 100;
+                        letter-spacing: 0.3px;
+                        font-size: 12px;
+                        align-items: center;
+                        cursor: pointer;
+
+                        img {
+                            width: 24px;
+                            margin-right: 5px;
+                        }
+                    }
+
+                    .inputHolder {
+                        margin: 5px 0;
+                        border: 0.5px solid #E5E5E5;
+                        border-radius: 6px;
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+
+                        .icon {
+                            position: absolute;
+                            right: 10px;
+                            cursor: pointer;
+                        }
+                    
+                        
+                        .inputbox {
+                            color: #808080;
+                            font-weight: 400;
+                            font-size: 15px;
+                            line-height: 20px;
+                            box-sizing: border-box;
+                            width: 100%;
+                            padding:10px;
+                            border: none;
+                            background-color: #F2F2F2;
+
+                            &:focus {
+                                outline: none;
+                            }
+                        }
+                    }
+                }
+
+                .line {
+                    margin:20px 10px;
+                    border-bottom: 1px solid #F2F2F2;
+                }
+            }
+
+            .new-already {
+                text-align: center;
+                font-weight: 500;
+                font-size: 12px;
+
+                p {
+                    a {
+                        color: $primaryColor;
+                        margin-left: 5px;
+                        cursor:pointer;
+                        text-decoration: none;
+
+                        &:hover{
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

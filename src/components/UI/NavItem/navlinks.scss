@@ -1,0 +1,20 @@
+
+.nav {
+
+    .Navlinks {
+        padding: 5px;
+        background-color: #fff;
+        border-radius: 6.68px;
+        text-decoration: none;
+        color: black;
+        display: block;
+
+    
+        &:hover, &.active {
+            background: #DFEBFF;
+        }
+
+        
+    }
+
+}

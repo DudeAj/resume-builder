@@ -1,0 +1,11 @@
+.Container {
+    .subContainer {
+        display: flex;
+
+        .content {
+            width: -webkit-fill-available;
+            
+        }
+        
+    }
+}
