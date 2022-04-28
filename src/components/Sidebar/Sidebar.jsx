@@ -12,7 +12,7 @@ const Sidebar = () => {
                     <NavItem path="education" title="Education" />
                     <NavItem path="skills" title="Skills" />
                     <NavItem path="languages" title="Languages" />
-                    <NavItem path="certifiiates" title="Certificates" />
+                    <NavItem path="certification" title="Certificates" />
                     <NavItem path="summary" title="Summary" />
                 </div>
 

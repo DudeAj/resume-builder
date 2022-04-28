@@ -10,6 +10,10 @@ import Container from './Container/Container';
 import Frontpage from './pages/Frontpage/Frontpage';
 import Template from './pages/Template/Template';
 import Experience from './pages/Experience/Experience';
+import Skills from './pages/Skills/Skills';
+import Language from './pages/Language/Language';
+import Certification from './pages/Certification/Certification'
+import Summary from './pages/Summary/Summary';
 
 function App() {
   return (
@@ -23,6 +27,10 @@ function App() {
         <Container>
           <Route path="/create" exact component={Create} />
           <Route path="/experience" exact component={Experience} />
+          <Route path="/skills" exact component={Skills} />
+          <Route path="/languages" exact component={Language} />
+          <Route path="/certification" exact component={Certification}/>
+          <Route path="/summary" exact component={Summary}/>
 
         </Container>
 
