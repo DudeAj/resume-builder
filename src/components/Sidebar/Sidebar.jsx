@@ -7,12 +7,12 @@ const Sidebar = () => {
         <div className={styles.sidebar}>
             <div className={styles.OptionContainer}>
                 <div className={styles.Option}>
-                    <NavItem active={true} path="personal-details" title="Personal Details" />
+                    <NavItem active={true} path="create" title="Personal Details" />
                     <NavItem path="experience" title="Experience" />
                     <NavItem path="education" title="Education" />
                     <NavItem path="skills" title="Skills" />
                     <NavItem path="languages" title="Languages" />
-                    <NavItem path="certifiiates" title="Certificates" />
+                    <NavItem path="certification" title="Certificates" />
                     <NavItem path="summary" title="Summary" />
                 </div>
 
