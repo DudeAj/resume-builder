@@ -6,13 +6,15 @@
     .subContainer {
         height:700px;
         width:700px;
-        
         margin-left: 100px;
 
-        .Heading {
+        .Heading{
             display: flex;
             justify-content:space-between;
             align-items: center;
+
+           
+
             p {
                 font-weight: 700;
                 font-size: 32px;
@@ -60,6 +62,13 @@
 
             .contact {
                 margin-top: 20px;
+
+                h2 {
+                    font-weight: 500;
+                    font-size: 15px;
+                    line-height: 18px;
+                    color: #7D7D7D;
+                }
 
                 .flex {
                     width: 100%;
