@@ -1,0 +1,23 @@
+.Inputholder {
+    width: 100%;
+    .Inputbox {
+        border: none;
+        border-bottom: 1px solid grey;
+        width: 100%;
+        font-size:14px;
+        margin-top: 30px;
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .InputError {
+        color: red;
+        border-bottom: 1px solid red;
+
+        &::placeholder {
+            color:red;
+        }
+    }
+
+}

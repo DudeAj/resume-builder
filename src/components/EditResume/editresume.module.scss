@@ -1,0 +1,39 @@
+@import '../../global.scss';
+.EditResume {
+    .newResume {
+                margin-top: 20px;
+                display:flex;
+
+                .box {
+                    width: 166px;
+                    height: 234px;
+                    background: #FEFEFE;
+                    border: 1px solid #1EA5FC;
+                    box-sizing: border-box;
+                    display:grid;
+                    place-items: center;
+                    
+                    .boxInner {
+                        text-align: center;
+                    }
+                }
+
+                .boxDetails {
+                    padding:10px;
+                    display:grid;
+
+                    span {
+                        font-weight: 700;
+                    }
+                    p{
+                        display: flex;
+                        align-items: center;
+                        cursor: pointer;
+
+                        &:hover {
+                            color: $primaryColor;
+                        }
+                    }
+                }
+            }
+}

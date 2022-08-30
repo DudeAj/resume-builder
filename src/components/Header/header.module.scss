@@ -1,0 +1,47 @@
+@import '../../global.scss';
+
+.Header {
+    background-color: black;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    height:80px;
+    box-shadow: 10px 4px 29px rgba(191, 191, 191, 0.25);
+
+    .title {
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 26.5714px;
+        line-height: 32px;
+        text-transform: capitalize;
+
+        span {
+            color:$primaryColor;
+        }
+    }
+
+    .Profile {
+        cursor: pointer;
+
+        .Popup {
+            background-color:#fff;
+            color: $labelColor;
+            position: absolute;
+            right: 0;
+            margin-right: 20px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: 5px;
+            transition: 0.5s;
+
+            p {
+                padding: 10px;
+                
+                &:hover {
+                    background-color: #00000050;
+                }
+            }
+        }
+    }
+}

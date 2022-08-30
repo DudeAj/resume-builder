@@ -1,0 +1,51 @@
+.box {
+    margin-top :15px;
+    padding: 40px;
+    box-shadow: 9px 9px 32px 4px rgba(219, 219, 219, 0.31);
+    border-radius: 10.7993px;
+
+    .closeButton {
+        display: flex;
+        justify-content: end;
+        cursor: pointer;
+        color: #7D7D7D;
+    }
+
+    .inner {
+        display:flex;
+        justify-content: space-between;
+
+        .information {
+            h2 {
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 19px;
+            }
+
+            p {
+                margin-top: 10px;
+                font-weight: 400;
+                font-size: 13.4195px;
+                line-height: 16px;
+
+            }
+        }
+        .icons {
+            display: flex;
+            gap:10px;
+        }
+    }
+
+    .contact {
+        margin-top: 20px;
+
+        .flex {
+            margin-top: 30px;
+            width: 100%;
+            display: flex;
+            gap: 50px;
+        }
+    }
+
+    
+}

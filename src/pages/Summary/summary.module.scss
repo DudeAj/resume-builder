@@ -1,0 +1,58 @@
+.Container {
+    display: flex;
+    place-items: center;
+    min-height: calc(100vh - 80px);
+
+    .subContainer {
+        height:700px;
+        width:700px;
+        
+        margin-left: 100px;
+
+        .Heading {
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            p {
+                font-weight: 700;
+                font-size: 32px;
+                line-height: 39px;
+            }
+    
+        }
+
+        .box {
+            margin-top :50px;
+            padding: 40px;
+            box-shadow: 9px 9px 32px 4px rgba(219, 219, 219, 0.31);
+            border-radius: 10.7993px;
+
+            .contact {
+
+                .inputArea {
+                    display: flex;
+                    border-bottom: 1px solid black;
+                    padding-bottom: 5px;
+                }
+
+                
+                input {
+                    margin-top: 0;
+                    
+                }
+                .flex {
+                    width: 100%;
+                    display: flex;
+                    gap: 50px;
+                }
+            }
+        }
+
+        .buttonHolder {
+            margin-top: 20px;
+            justify-content: end;
+            display: flex;
+        }
+    }
+
+}

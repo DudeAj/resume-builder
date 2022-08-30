@@ -1,0 +1,37 @@
+@import '../../global.scss';
+
+.container {
+
+    .subContainer{
+        margin-top: 80px;
+        padding:0 40px;
+
+        .CreateResume {
+            margin-top: 30px;
+            
+
+            .newResume {
+                margin-top: 20px;
+                .box {
+                    width: 166px;
+                    height: 234px;
+                    background: #FEFEFE;
+                    border: 1px solid $primaryColor;
+                    box-sizing: border-box;
+                    display:grid;
+                    place-items: center;
+                    
+                    .boxInner {
+                        text-align: center;
+                        cursor: pointer;
+                        &:hover {
+                            color: $primaryColor;
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+}

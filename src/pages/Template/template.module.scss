@@ -1,0 +1,12 @@
+.subContainer {
+    margin: 0 150px;
+    margin-top: 60px;
+
+    .Templates {
+        margin-top:30px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+        
+    }
+}
