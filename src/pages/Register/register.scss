@@ -8,12 +8,12 @@
 
         .leftContainer {
             width: 75%;
-            background-color:#E5E5E5;
+            background-color: #F2FAFC;
             
             .leftImage {
                 width: 100%;
-                height: 100%;
-                object-fit: cover;
+                height: 100vh;
+                object-fit: contain;
             }
         }
 

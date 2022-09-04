@@ -12,9 +12,10 @@ const Header = () => {
         const auth = getAuth();
         signOut(auth).then(() => {
             console.log("Signout successfully");
+            localStorage.removeItem("user_id");
             setShow(false);
         }).catch((error) => {
-            console.log()
+            
         });
     }
 

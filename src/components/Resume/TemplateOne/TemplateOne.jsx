@@ -6,10 +6,8 @@ const TemplateOne = () => {
         <div className={styles.container}>
             <div className={styles.subContainer}>
                 <div className={styles.Left}>
-
                 </div>
                 <div className={styles.Right}>
-
                 </div>
             </div>
         </div>

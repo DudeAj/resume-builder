@@ -6,6 +6,7 @@ import Button from "../../components/UI/Button/Button";
 import {CircularProgress} from '@mui/material';
 import { ref, set, onValue } from "firebase/database";
 import { db } from "../../firebase";
+import history from "../../utils/history";
 
 const Certification = () => {
   const [certification, setCertification] = useState("");
@@ -15,11 +16,11 @@ const Certification = () => {
     setLoading(true);
     const user_id = localStorage.getItem("user_id");
     const postListRef = ref(db, "certification/" + user_id);
-    const response = await set(postListRef, {
+    await set(postListRef, {
       value: certification,
     });
-    console.log("its Clicked");
     setLoading(false);
+    history.push("/summary");
   };
 
   useEffect(() => {

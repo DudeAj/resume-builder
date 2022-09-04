@@ -31,6 +31,7 @@ const Create = () => {
   const [file, setFile] = useState(null);
   const [photo, setPhoto] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [fetchedImage, setFetchedImage] = useState(null);
 
   const generateForm = () => {
     let formdata = new FormData();
@@ -43,20 +44,20 @@ const Create = () => {
 
   const handleClick = async () => {
     setLoading(true)
-    const data = generateForm();
     const user_id = localStorage.getItem("user_id");
-    const fileName = file.name;
     try {
-      const storageReference = storageRef(storage, file.name);
-      const uploadTask = await uploadBytes(storageReference, file);
+      const fileName = file?.name;
+      if(fileName) {
+        const storageReference = storageRef(storage, file.name);
+        await uploadBytes(storageReference, file);
+      }
 
-      const response = await set(
+      await set(
         ref(db, "container/" + user_id + "/personal"),
-        { ...formData, profile: fileName }
+        { ...formData, profile: fileName ? fileName : fetchedImage}
       );
       setLoading(false);
-      console.log("repsonse", response);
-      console.log("uploadTask", uploadTask);
+      
       
       history.push("/experience");
     } catch (err) {
@@ -65,7 +66,7 @@ const Create = () => {
   };
 
   const onDrop = useCallback((acceptedFiles) => {
-    console.log(acceptedFiles[0]);
+    
     setFile(acceptedFiles[0]);
     const picture = URL.createObjectURL(acceptedFiles[0]);
     setPhoto(picture);
@@ -79,16 +80,26 @@ const Create = () => {
   const { getRootProps, isDragActive } = useDropzone({ onDrop });
 
   useEffect(() => {
-    const user_id = localStorage.getItem("user_id");
-    const resumeBuilderRef = ref(db, "container/" + user_id + "/personal");
-    onValue(resumeBuilderRef, async (snapshot) => {
-      const { profile, ...data } = snapshot.val();
-      if (data) {
-        setFormData(data);
-        const imageURL = await getDownloadURL(storageRef(storage, profile));
-        setPhoto(imageURL);
-      }
-    });
+    
+      const user_id = localStorage.getItem("user_id");
+      const resumeBuilderRef = ref(db, "container/" + user_id + "/personal");
+      onValue(resumeBuilderRef, async (snapshot) => {
+       
+        if(snapshot.val()) {
+          const { profile, ...data } = snapshot.val();
+          setFetchedImage(profile);
+          if (data) {
+            setFormData(data);
+            const imageURL = await getDownloadURL(storageRef(storage, profile));
+            setPhoto(imageURL);
+          }
+        }
+        else {
+          console.log("No data found")
+        }
+      });
+
+    
   }, []);
 
   return (
@@ -106,7 +117,7 @@ const Create = () => {
                   <img
                     src={photo}
                     alt="person"
-                    style={{ width: "100%", height: "100%" }}
+                    style={{ width: "100%", height: "170px", objectFit:"contain" }}
                   />
                 ) : (
                   <PersonIcon fontSize="large" />

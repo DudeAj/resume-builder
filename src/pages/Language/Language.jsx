@@ -10,13 +10,14 @@ import Select from "../../components/UI/Select/Select";
 import Chip from "@mui/material/Chip";
 import { ref, set, onValue, remove, push } from "firebase/database";
 import { db } from "../../firebase";
+import history from "../../utils/history";
 
 const Language = () => {
   const [items, setItems] = useState([]);
   const [language, setLanguage] = useState("");
 
   const handleClick = () => {
-    console.log("its Clicked");
+    history.push("/certification")
   };
 
   const handleDelete = async (id) => {
@@ -26,13 +27,13 @@ const Language = () => {
 
   const handleTag = async (event) => {
     event.preventDefault();
-    setLanguage("");
     const user_id = localStorage.getItem("user_id");
     const postListRef = ref(db, "language/" + user_id);
     const newPostRef = push(postListRef);
     await set(newPostRef, {
       value: language,
     });
+    setLanguage("");
   };
 
   useEffect(() => {
@@ -40,13 +41,13 @@ const Language = () => {
     const resumeBuilderRef = ref(db, "language/" + user_id);
     onValue(resumeBuilderRef, (snapshot) => {
       const data = snapshot.val();
-      if (data) {
-        const response = Object.keys(data).map((key) => ({
+     
+        const response = data ? Object.keys(data).map((key) => ({
           ...data[key],
           id: key,
-        }));
+        })) : [];
         setItems(response);
-      }
+      
     });
   }, []);
 

@@ -1,13 +1,13 @@
-import React from 'react';
-import styles from './temp.module.scss';
-import history from '../../utils/history';
+import React from "react";
+import styles from "./temp.module.scss";
 
-const Temp = () => {
-    return (
-        <div className={styles.Temp} onClick={() => history.push('/create')}>
-            <img src="https://www.pinclipart.com/picdir/big/379-3792862_resume-rsum-clipart.png" />
-        </div>
-    )
-}
 
-export default Temp
+const Temp = ({ link, click }) => {
+  return (
+    <div className={styles.Temp} onClick={() => click(link.id)}>
+      <img src={link.img} alt={`template${link.id}`} />
+    </div>
+  );
+};
+
+export default Temp;

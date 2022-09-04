@@ -41,8 +41,13 @@ const Experience = () => {
     const user_id = localStorage.getItem("user_id");
     const postListRef = ref(db, "experience/" + user_id);
     const newPostRef = push(postListRef);
+    let latestdata = {...formData};
+    if(current) {
+      latestdata = {...formData, endMonth:'', endYear:''}
+    }
+
     await set(newPostRef, {
-      ...formData,
+      ...latestdata,
     });
     setExperience([...experience, formData]);
     setShow(false);
@@ -67,11 +72,10 @@ const Experience = () => {
 
   const handleEditSave = async () => {
     setLoading(true);
-    console.log("id", selectedId);
+
     const user_id = localStorage.getItem("user_id");
     const { id, ...rest } = formData;
-    console.log("id", id);
-    console.log("rest", rest);
+
     const postListRef = ref(db, "experience/" + user_id + "/" + id);
     await set(postListRef, {
       ...rest,
@@ -91,7 +95,6 @@ const Experience = () => {
           ...data[key],
           id: key,
         }));
-
         setExperience(response);
       }
     });

@@ -10,11 +10,17 @@
                     background: #FEFEFE;
                     border: 1px solid #1EA5FC;
                     box-sizing: border-box;
-                    display:grid;
-                    place-items: center;
                     
                     .boxInner {
                         text-align: center;
+                        width: 100%;
+                        height: 100%;
+
+                        img {
+                            object-fit: contain;
+                            height: 100%;
+                            width: 100%;
+                        }
                     }
                 }
 
@@ -24,6 +30,7 @@
 
                     span {
                         font-weight: 700;
+                        color: $primaryColor;
                     }
                     p{
                         display: flex;

@@ -17,9 +17,8 @@ import Skills from "./pages/Skills/Skills";
 import Language from "./pages/Language/Language";
 import Certification from "./pages/Certification/Certification";
 import Summary from "./pages/Summary/Summary";
-import Preview from "./pages/Preview/Preview";
 import Resume from "./pages/Resume/Resume";
-import { getPersonal,getExperience, getEducation, getSkills, getLanguages, getCertification, getSummary} from "./store/reducers/data";
+import { getPersonal,getExperience, getEducation, getSkills, getLanguages, getCertification, getSummary, getResume} from "./store/reducers/data";
 
 
 function App() {
@@ -32,20 +31,8 @@ function App() {
     dispatch(getLanguages());
     dispatch(getCertification());
     dispatch(getSummary());
+    dispatch(getResume());
 
-    // const user_id = localStorage.getItem("user_id");
-    // const databaseRef = ref(db);
-    // get(child(databaseRef, `container/${user_id}`))
-    //   .then((snapshot) => {
-    //     if (snapshot.exists()) {
-    //       console.log(snapshot.val());
-    //     } else {
-    //       console.log("No data available");
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
   }, []);
   return (
     <div className="App">
@@ -53,10 +40,10 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/" exact component={Home} />
-        <Route path="/front" exact component={Frontpage} />
+        <Route path="/create" exact component={Frontpage} />
         <Route path="/template" exact component={Template} />
         <Container>
-          <Route path="/create" exact component={Create} />
+          <Route path="/personal" exact component={Create} />
           <Route path="/experience" exact component={Experience} />
           <Route path="/education" exact component={Education} />
           <Route path="/skills" exact component={Skills} />

@@ -9,7 +9,6 @@ import AddIcon from "@mui/icons-material/Add";
 import Card from "../../components/Card/Card";
 import { ref, set, onValue, remove, push } from "firebase/database";
 import { db } from "../../firebase";
-import history from "../../utils/history";
 import { CircularProgress } from "@mui/material";
 
 const Experience = () => {
@@ -19,7 +18,7 @@ const Experience = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const [selectedId, setSelectedId] = useState(null);
+
 
   const [education, setEducation] = useState([]);
 
@@ -58,7 +57,7 @@ const Experience = () => {
 
   const editData = (id) => {
     setEditing(true);
-    setSelectedId(id);
+    
     const data = education.filter((e, i) => i === id);
     setShow(true);
     setFormData({ ...data[0] });
@@ -177,7 +176,7 @@ const Experience = () => {
                 key={id}
                 title={item.university}
                 subTitle={item.degree}
-                id={item.id}
+                id={id}
                 editData={editData}
                 deleteData={deleteData}
               />

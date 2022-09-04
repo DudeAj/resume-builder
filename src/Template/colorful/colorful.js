@@ -41,8 +41,8 @@ const Colorful = ({ data }) => {
     <div className={styles.outerContainer}>
       <h2 className={styles.descHeading}>{title}</h2>
       <div className={styles.dataContainer}>
-        {info?.map((item) => (
-          <div className={styles.innerContainer}>
+        {info?.map((item,i) => (
+          <div key={i} className={styles.innerContainer}>
             <p className={styles.time}>
               <span>
                 {item.startMonth}, {item.startYear}
@@ -68,8 +68,8 @@ const Colorful = ({ data }) => {
     <div className={styles.outerContainer}>
       <h2 className={styles.descHeading}>{title}</h2>
       <div className={styles.dataContainer}>
-        {info?.map((item) => (
-          <div className={styles.innerContainer}>
+        {info?.map((item,i) => (
+          <div key={i} className={styles.innerContainer}>
             <p className={styles.time}>
               <span>{item.year}</span>
             </p>
@@ -84,14 +84,13 @@ const Colorful = ({ data }) => {
   );
 
   const shortInfo = (title, info) => {    
-    console.log(info)
     return (
       <div className={styles.outerContainer}>
         <h2 className={styles.descHeading}>{title}</h2>
         <div className={styles.shortContainer}>
           <ul className={styles.optionContainer}>
-            {Array.isArray(info) ? info?.map(item=>{
-              return <li>{item.value}</li>
+            {Array.isArray(info) ? info?.map((item, i)=>{
+              return <li key={i}>{item.value}</li>
             }): <li>{info}</li>}
           </ul>
         </div>

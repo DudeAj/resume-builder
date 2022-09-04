@@ -4,9 +4,13 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { ref, set, onValue } from "firebase/database";
 import { db } from "../../firebase";
+import {setProgress} from '../../store/reducers/data';
+import { useDispatch, useSelector } from "react-redux";
 
-const Progress = () => {
+const ProgressComponent = () => {
   const [percentage, setPercentage] = useState(0);
+  const dispatch = useDispatch();
+  const {progress} = useSelector(state=>state.data);
 
   useEffect(() => {
     const user_id = localStorage.getItem("user_id");
@@ -14,22 +18,24 @@ const Progress = () => {
     onValue(personalRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
-        setPercentage(20)
-        console.log("data in progress", data)
+        dispatch(setProgress(20))
+        
       }
     });
     const experienceRef = ref(db, "experience/" + user_id);
     onValue(experienceRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
-        setPercentage(40)
+        dispatch(setProgress(40))
+        
       }
     });
     const educationRef = ref(db, "education/" + user_id);
     onValue(educationRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
-        setPercentage(60)
+        dispatch(setProgress(60))
+        
       }
     });
 
@@ -37,7 +43,8 @@ const Progress = () => {
     onValue(skillsRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
-        setPercentage(70)
+        dispatch(setProgress(70))
+        
       }
     });
 
@@ -45,7 +52,8 @@ const Progress = () => {
     onValue(languageRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
-        setPercentage(80)
+        dispatch(setProgress(80))
+        
       }
     });
 
@@ -53,23 +61,25 @@ const Progress = () => {
     onValue(certificateRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
-        setPercentage(90)
+        dispatch(setProgress(90))
+        
       }
     });
 
     const summaryRef = ref(db, "summary/" + user_id);
     onValue(summaryRef, (snapshot) => {
       const data = snapshot.val();
-      if (data) {
-        setPercentage(100)
+      
+      if (data && data.value) {
+        dispatch(setProgress(100))
       }
     });
   }, []);
   return (
     <div className={styles.progress}>
-      <CircularProgressbar value={percentage} text={`${percentage}%`} />;
+      <CircularProgressbar value={progress} text={`${progress}%`} />;
     </div>
   );
 };
 
-export default Progress;
+export default ProgressComponent;

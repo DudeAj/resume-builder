@@ -16,10 +16,6 @@ const Skills = () => {
   const [skilltag, setSkillTag] = useState("");
   const [refresh, setRefresh] = useState(false);
 
-  const handleClick = () => {
-    console.log("its Clicked");
-  };
-
   const handleDelete = async (id) => {
     const user_id = localStorage.getItem("user_id");
     await remove(ref(db, "skills/" + user_id + "/" + id));
@@ -63,7 +59,6 @@ const Skills = () => {
             <form className={styles.inputArea} onSubmit={handleTag}>
               {items.map((item, index) => (
                 <Chip
-                  sx={{ borderRadius: "8px" }}
                   key={index}
                   label={item.value}
                   className={styles.Chip}
@@ -82,7 +77,7 @@ const Skills = () => {
           </div>
         </div>
         <div className={styles.buttonHolder}>
-          <Button click={handleClick} text="Submit" />
+          <Button type="submit" text="Submit" />
         </div>
       </div>
     </div>

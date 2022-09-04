@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./login.scss";
 import { Visibility, VisibilityOff } from "@mui/icons-material/";
+import { CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import history from "../../utils/history";
+import { useLocation } from "react-router-dom";
 import Loginimage from "../../assets/login.png";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [progress, setProgress] = useState(false);
+  const location = useLocation();
 
   const togglePass = () => {
     setShowPass(!showPass);
@@ -17,22 +26,61 @@ const Login = () => {
 
   const LoginSubmit = (e) => {
     e.preventDefault();
-
+    setProgress(true);
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
+        setProgress(false);
         history.push("/");
         // ...
       })
       .catch((error) => {
+        setProgress(false);
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(error);
       });
   };
+
+  const GoogleLogin = () => {
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        console.log(`Access token: ${credential}`);
+        console.log(`result: ${result}`);
+        history.push("/");
+        
+      })
+      .catch((error) => {
+
+        console.log("Error: ", error);
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  };
+
+  useEffect(()=> {
+    const user_id = localStorage.getItem('user_id');
+    console.log('history', history.location)
+    if(user_id) {
+      // history.push("/");
+      console.log("location")
+    }
+
+  },[]);
 
   return (
     <div className="container">
@@ -83,22 +131,30 @@ const Login = () => {
             </div>
 
             <div className="forgot-pass">
-              <div className="forgotinput">
-                <input type="checkbox" id="vehicle1" />
-                <label htmlFor="vehicle1"> Remember me</label>
-              </div>
+              <div className="forgotinput"></div>
               <p>Forgot password?</p>
             </div>
 
             <div className="inputHolderContainer">
               <button className="login-btn" type="submit">
-                Sign In
+                {progress ? (
+                  <CircularProgress size={18} sx={{ color: "#fff" }} />
+                ) : (
+                  "Sign In"
+                )}
               </button>
             </div>
             <div className="line"></div>
             <div className="inputHolderContainer">
-              <button className="google-btn" type="button">
-                <img src="https://cdn-icons.flaticon.com/png/512/2504/premium/2504739.png?token=exp=1647248416~hmac=250a11fda401903cea9797a6fbc8f468" alt="user" />
+              <button
+                className="google-btn"
+                type="button"
+                onClick={GoogleLogin}
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png"
+                  alt="Login"
+                />
                 Login Via Google
               </button>
             </div>

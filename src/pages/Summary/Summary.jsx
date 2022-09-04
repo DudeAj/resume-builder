@@ -6,6 +6,7 @@ import Button from "../../components/UI/Button/Button";
 import { ref, set, onValue } from "firebase/database";
 import { db } from "../../firebase";
 import {CircularProgress} from '@mui/material';
+import history from "../../utils/history";
 
 const Summary = () => {
   const [summary, setSummary] = useState("");
@@ -19,6 +20,7 @@ const Summary = () => {
       value: summary,
     });
     setLoading(false);
+    history.push("/preview");
   };
 
   useEffect(() => {
