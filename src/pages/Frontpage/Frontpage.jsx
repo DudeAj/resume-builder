@@ -14,7 +14,7 @@ import {db} from '../../firebase';
 
 const Frontpage = () => {
   const { resume } = useSelector((state) => state.data);
-  const [userResume, setUserResume] = useState([]);
+  
   const dispatch = useDispatch();
 
   const editResume = (id) => {
@@ -32,23 +32,6 @@ const Frontpage = () => {
     dispatch(setSelectedResume(id));
     history.push("/preview");
   };
-
-  useEffect(()=> {
-    if(resume) {
-      resume.forEach(res => {
-        const temp = Templates.filter(
-          (item) => item.id === res.resumeId
-        )[0];
-  
-        if(temp) {
-          setUserResume(temp);
-        }
-      });
-    }
-
-  },[resume]);
-
-  console.log("lenth", userResume)
 
   return (
     <div className={styles.container}>
