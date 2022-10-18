@@ -18,7 +18,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [progress, setProgress] = useState(false);
-  const location = useLocation();
+  const [error,setError] = useState(null);
+  
 
   const togglePass = () => {
     setShowPass(!showPass);
@@ -30,6 +31,7 @@ const Login = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        setError(null)
         // Signed in
         const user = userCredential.user;
         setProgress(false);
@@ -40,6 +42,7 @@ const Login = () => {
         setProgress(false);
         const errorCode = error.code;
         const errorMessage = error.message;
+        setError(errorMessage)
       });
   };
 
@@ -128,6 +131,7 @@ const Login = () => {
                   <VisibilityOff className="icon" onClick={togglePass} />
                 )}
               </div>
+              
             </div>
 
             <div className="forgot-pass">
@@ -143,6 +147,7 @@ const Login = () => {
                   "Sign In"
                 )}
               </button>
+              <span style={{color:'red', marginTop: '5px'}}>{error}</span>
             </div>
             <div className="line"></div>
             <div className="inputHolderContainer">

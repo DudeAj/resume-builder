@@ -2,11 +2,8 @@ import React, { useState, useEffect } from "react";
 import Progress from "../../components/Progress/Progress";
 import Input from "../../components/UI/Input/Input";
 import styles from "./skills.module.scss";
-import { useCallback } from "react";
-import { useDropzone } from "react-dropzone";
-import PersonIcon from "@mui/icons-material/Person";
+
 import Button from "../../components/UI/Button/Button";
-import Select from "../../components/UI/Select/Select";
 import Chip from "@mui/material/Chip";
 import { ref, set, onValue, remove, push } from "firebase/database";
 import { db } from "../../firebase";

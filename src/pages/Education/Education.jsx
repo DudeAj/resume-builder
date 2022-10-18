@@ -10,6 +10,7 @@ import Card from "../../components/Card/Card";
 import { ref, set, onValue, remove, push } from "firebase/database";
 import { db } from "../../firebase";
 import { CircularProgress } from "@mui/material";
+import history from "../../utils/history";
 
 const Experience = () => {
   const [show, setShow] = useState(false);
@@ -17,8 +18,6 @@ const Experience = () => {
   const [editing, setEditing] = useState(false);
 
   const [loading, setLoading] = useState(false);
-
-
 
   const [education, setEducation] = useState([]);
 
@@ -53,7 +52,9 @@ const Experience = () => {
     }
   };
 
-  const handleSubmit = async () => {};
+  const handleSubmit = async () => {
+    history.push('/skills')
+  };
 
   const editData = (id) => {
     setEditing(true);

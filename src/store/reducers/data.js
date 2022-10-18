@@ -157,6 +157,7 @@ const dataSlice = createSlice({
     },
     [getPersonal.rejected]: (state, action) => {
       state.loading = false;
+      state.personal = []
     },
     [getExperience.fulfilled]: (state, action) => {
       state.experience = action.payload;

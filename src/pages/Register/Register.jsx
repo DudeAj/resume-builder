@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./register.scss";
 import { Visibility, VisibilityOff } from "@mui/icons-material/";
+import { CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, set } from "firebase/database";
@@ -14,6 +15,8 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cPassword, setcPassword] = useState("");
+  const [progress, setProgress] = useState(false);
+  const [error, setError] = useState(null);
 
   const togglePass = () => {
     setShowPass(!showPass);
@@ -26,19 +29,23 @@ const Register = () => {
   const CreateUser = (e) => {
     e.preventDefault();
     if (password !== cPassword) {
-      console.log("Password did not match");
+      setError("Password did not match")
+      setProgress(false);
     } else {
+      setProgress(true);
+      setError(null);
       const auth = getAuth();
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
+          setProgress(false);
           history.push("/");
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode, errorMessage);
+          setError(errorMessage)
+          setProgress(false);
         });
       console.log(email, password, cPassword);
     }
@@ -48,7 +55,7 @@ const Register = () => {
     <div className="container">
       <div className="subContainer">
         <div className="leftContainer">
-          <img src={registerImage} className="leftImage" />
+          <img src={registerImage} className="leftImage" alt="regiter" />
         </div>
 
         <div className="registerForm">
@@ -63,7 +70,7 @@ const Register = () => {
           <h2>Make your Account</h2>
           <form onSubmit={CreateUser}>
             <div className="inputHolderContainer">
-              <label>Username</label>
+              <label>Email</label>
               <div className="inputHolder">
                 <input
                   type="text"
@@ -119,13 +126,21 @@ const Register = () => {
 
             <div className="inputHolderContainer">
               <button className="login-btn" type="submit">
-                Sign Up
+                {progress ? (
+                  <CircularProgress size={18} sx={{ color: "#fff" }} />
+                ) : (
+                  "Sign Up"
+                )}
               </button>
+              <span style={{color:'red', marginTop: '5px'}}>{error}</span>
             </div>
             <div className="line"></div>
             <div className="inputHolderContainer">
               <button className="google-btn" type="button">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png" alt="register"/>
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png"
+                  alt="register"
+                />
                 Login Via Google
               </button>
             </div>

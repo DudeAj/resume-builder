@@ -54,7 +54,9 @@ const Experience = () => {
     setLoading(false);
   };
 
-  const handleSubmit = async () => {};
+  const handleSubmit = async () => {
+    history.push('/education')
+  };
 
   const editData = (id) => {
     setEditing(true);

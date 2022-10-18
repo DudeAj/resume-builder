@@ -12,7 +12,7 @@ import store from "./store/reducers/index";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router history={history}>
+      <Router history={history} basename="/resume-builder">
         <App />
       </Router>
     </Provider>
